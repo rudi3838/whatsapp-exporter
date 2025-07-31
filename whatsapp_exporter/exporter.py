@@ -1,7 +1,7 @@
 import html
 from string import Template
 
-from models import Message
+from .models import Message
 
 
 def chats_to_txt(chats: list, directory_path: str):
@@ -66,10 +66,10 @@ def _load_file_content(filepath: str) -> str:
 
 def _save_to_html_file(chat_contents: str, chats_list: str, filepath: str):
     # Load the HTML template from file and populate it with data
-    t = Template(_load_file_content("resources/template.html"))
+    t = Template(_load_file_content("./whatsapp_exporter/whatsapp_exporter/resources/template.html"))
     html_output = t.substitute(
-        js_code=_load_file_content("resources/main.js"),
-        css_code=_load_file_content("resources/styles.css"),
+        js_code=_load_file_content("./whatsapp_exporter/whatsapp_exporter/resources/main.js"),
+        css_code=_load_file_content("./whatsapp_exporter/whatsapp_exporter/resources/styles.css"),
         chats_list=chats_list,
         chat_contents=chat_contents
     )
